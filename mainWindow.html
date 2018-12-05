@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shopping List</title>
+</head>
+<body>
+    <h1>Shopping list</h1>
+    <ul></ul>
+</body>
+<script>
+ const electron = require('electron');
+    const {ipcRenderer} = electron;
+
+    ipcRenderer.on('item:list',function(e,item){
+        //console.log(123);
+        const ul = document.querySelector('ul');
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(item))
+        ul.appendChild(li);
+    });
+</script>
+</html>

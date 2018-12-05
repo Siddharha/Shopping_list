@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Shopping List</title>
+</head>
+<body>
+    <form>
+        <div>
+            <input type="text" placeholder="Enter Shopping List" id="inputItem">
+        </div>
+        <button id="btnAdd" type="submit">Add To List</button>
+    </form>
+</body>
+
+<script>
+
+    const electron = require('electron');
+    const {ipcRenderer} = electron;
+    const form = document.querySelector('form');
+    form.addEventListener('submit', submitForm);
+    let item = document.getElementById('inputItem');
+    function submitForm(e){
+        e.preventDefault(); //For Disabling Default form submit behaviour 
+        //console.log(item.value);
+        ipcRenderer.send('item:list',item.value);
+    }
+
+</script>
+</html>

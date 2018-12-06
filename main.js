@@ -62,6 +62,9 @@ function openAddWindow(){
     addWindow = new BrowserWindow({
         width:300,
         height:200,
+        modal: true,
+        parent: mainWindow,
+        resizable: false
     });
     addWindow.loadURL(url.format({
         pathname:path.join(__dirname,'addWindow.html'),
@@ -69,8 +72,7 @@ function openAddWindow(){
         slashes: true
     }));
 
-    //addWindow.setMenu(null);
-    
+    addWindow.setMenu(null);
     addWindow.on('closed',function(){
         addWindow = null
     });

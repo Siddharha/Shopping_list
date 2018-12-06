@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="addStyle.css">
     <title>Add Shopping List</title>
 </head>
 <body>
-    <form>
+    <form id="add_form">
         <div>
             <input type="text" placeholder="Enter Shopping List" id="inputItem">
         </div>
-        <button id="btnAdd" type="submit">Add To List</button>
+        <button class = "waves-effect waves-light btn" id="btnAdd" type="submit">Add To List<i class="material-icons right">send</i></button>
     </form>
 </body>
 
@@ -22,7 +30,11 @@
     function submitForm(e){
         e.preventDefault(); //For Disabling Default form submit behaviour 
         //console.log(item.value);
-        ipcRenderer.send('item:list',item.value);
+        if(item.value !=""){
+            ipcRenderer.send('item:list',item.value);
+            item.value = "";
+        }
+       
     }
 
 </script>

@@ -61,10 +61,11 @@ const menuTemplate = [
 function openAddWindow(){
     addWindow = new BrowserWindow({
         width:300,
-        height:200,
+        height:150,
         modal: true,
         parent: mainWindow,
-        resizable: false
+        resizable: false,
+        minimizable:false
     });
     addWindow.loadURL(url.format({
         pathname:path.join(__dirname,'addWindow.html'),
